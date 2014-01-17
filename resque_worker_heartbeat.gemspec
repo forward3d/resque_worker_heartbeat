@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
 
+  s.license      = 'MIT'
+
   s.add_dependency 'resque', '~> 1.25.0'
 
   s.add_development_dependency 'rspec'
