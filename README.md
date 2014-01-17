@@ -28,7 +28,7 @@ will do this when it is idle and working on a job.
 
 The worker will write a key containing an empty string into Redis with the following name:
 
-    worker:worker_name:heartbeat
+    worker:worker_name:worker_pid:heartbeat
 
 It will set the expiration of the key to `heartbeat_interval_seconds * heartbeats_before_dead`;
 more on these below.
@@ -47,6 +47,10 @@ without the heartbeat key being touched before it will disappear from Redis.
 The defaults are `HEARTBEAT_INTERVAL_SECONDS = 2` and `HEARTBEATS_BEFORE_DEAD = 25`. This means
 a worker will send a heartbeat every two seconds, and after 50 seconds without a heartbeat the heartbeat
 key will disappear and the worker can be considered dead.
+
+## Tracking individual workers
+
+Thanks to code from [jonp](https://github.com/jonp), each individual worker will send a heartbeat to its own key.
 
 ## Warning
 
